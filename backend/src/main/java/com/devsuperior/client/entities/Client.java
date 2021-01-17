@@ -1,5 +1,6 @@
 package com.devsuperior.client.entities;
 
+import java.io.Serializable;
 import java.time.Instant;
 
 import javax.persistence.Column;
@@ -11,7 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_client")
-public class Client {
+public class Client implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +37,11 @@ public class Client {
 		this.income = income;
 		this.birthDate = birthDate;
 		this.children = children;
+	}
+	
+	public Client(Long id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 
 	public Long getId() {
